@@ -1,32 +1,18 @@
 package battleship;
 
-public class SquareStatus {
-    enum Status{
-        EMPTY,
-        SHIP,
-        HIT,
-        MISSED
-    }
-    private Status status;
+public enum SquareStatus {
+        EMPTY('0'),
+        SHIP('S'),
+        HIT('H'),
+        MISSED('M');
+    private final char symbol;
 
-    public SquareStatus(Status status){
-        this.status = status;
+    SquareStatus(char symbol) {
+        this.symbol = symbol;
     }
-
-    public char getCharacter(){
-        switch (this.status){
-            case SHIP: return 'X';
-            case HIT: return 'H';
-            case MISSED: return 'M';
-            default: return '0';
-        }
+    public char getCharacter() {
+        return symbol;
     }
 
-    public Status getStatus(){
-        return this.status;
-    }
-
-    public void setStatus(Status status){
-        this.status = status;
-    }
 }
+
