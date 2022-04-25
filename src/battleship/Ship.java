@@ -4,5 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Ship {
-    List<Square> positions = new ArrayList<>();
+    private ArrayList<Square> positions = new ArrayList<Square>();
+
+    public ArrayList<Square> getPositions(){
+        return this.positions;
+    }
 }
