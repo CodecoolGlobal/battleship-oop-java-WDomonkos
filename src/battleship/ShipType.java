@@ -1,37 +1,27 @@
 package battleship;
-public class ShipType{
 
-    private final ShipLength ship;
+public enum ShipType {
+    CARRIER(2),
+    CRUISER(3),
+    BATTLESHIP(4),
+    SUBMARINE(5),
+    DESTROYER(6);
 
-    public ShipType (ShipLength ship){
-        this.ship = ship;
+    private final int length;
+
+    ShipType(int length) {
+        this.length = length;
     }
 
-    public int getShipLength(){
-        switch (this.ship){
-            case CARRIER:
-                return 2;
-            case CRUISER:
-                return 3;
-            case BATTLESHIP:
-                return 4;
-            case SUBMARINE:
-                return 5;
-            default:
-                return 6;
-        }
+    public int getLength(){
+        return this.length;
     }
-
-    public enum ShipLength {
-        CARRIER,
-        CRUISER,
-        BATTLESHIP,
-        SUBMARINE,
-        DESTROYER
-    }
-
-
-
 }
+
+
+
+
+
+
 
 
