@@ -19,4 +19,8 @@ public class Ship {
            position.add(coordinate);
     }
 
+    public ArrayList<Square> getPosition(){
+        return position;
+    }
+
 }
