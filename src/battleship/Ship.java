@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Ship {
 
-    private ArrayList<Square> position = new ArrayList<>();
+    private ArrayList<Square> positions = new ArrayList<>();
     private final Board board;
     private final ShipType type;
 
@@ -16,11 +16,21 @@ public class Ship {
     }
 
     public void addPositions(Square coordinate){
-           position.add(coordinate);
+           positions.add(coordinate);
     }
 
     public ArrayList<Square> getPosition(){
-        return position;
+        return positions;
     }
+
+    public boolean isAlive(){
+        for (Square position : positions){
+            if (position.getStatus() == SquareStatus.SHIP){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 }
