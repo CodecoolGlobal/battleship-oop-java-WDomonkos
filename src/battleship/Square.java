@@ -24,7 +24,8 @@ public class Square {
     public void setStatus(SquareStatus status){
         this.status = status;
     }
-    public char getStatusRepresentation(){
-        return status.getCharacter();
+    @Override
+    public String toString(){
+        return String.valueOf(this.status.getCharacter());
     }
 }
