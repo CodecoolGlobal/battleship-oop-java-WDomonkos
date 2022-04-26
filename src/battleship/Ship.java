@@ -32,5 +32,8 @@ public class Ship {
         return false;
     }
 
+    public ShipType getShipType(){
+        return this.type;
+    }
 
 }
