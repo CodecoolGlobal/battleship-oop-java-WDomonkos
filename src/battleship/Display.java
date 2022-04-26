@@ -13,4 +13,13 @@ public class Display {
     public void shout(String message){
         System.out.println(message);
     }
+
+    public void displayBoard(Board board){
+        System.out.println(board);
+    }
+
+    public void displayWinner(Player player){
+        this.clear();
+        System.out.println("\n\n\n\t\t\tThe Winner is: " + player.toString());
+    }
 }

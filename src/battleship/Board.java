@@ -32,7 +32,19 @@ public class Board {
         return this.BOARD_HEIGHT;
     }
 
-    public Square [][] getBoard(){
-        return this.ocean;
+    @Override
+    public String toString(){
+        StringBuilder s = new StringBuilder(new String("   0  1  2  3  4  5  6  7  8  9\n"));
+        for(int i = 0; i < BOARD_HEIGHT; i++){
+            s.append((char) (i + 65));
+            s.append("  ");
+            for(int j = 0; j < BOARD_WIDTH; j++){
+                s.append(this.ocean[i][j]);
+                s.append("  ");
+            }
+            s.append("\n");
+        }
+        return s.toString();
     }
+
 }
