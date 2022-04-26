@@ -27,4 +27,7 @@ public class Square {
     public char getStatusRepresentation(){
         return status.getCharacter();
     }
+    public SquareStatus getStatus(){
+        return this.status;
+    }
 }
