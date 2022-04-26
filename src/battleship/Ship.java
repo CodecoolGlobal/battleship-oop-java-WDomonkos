@@ -35,5 +35,7 @@ public class Ship {
     public ShipType getShipType(){
         return this.type;
     }
-
+public void clearPositions(){
+        positions.clear();
+}
 }

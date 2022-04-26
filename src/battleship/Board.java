@@ -20,14 +20,19 @@ public class Board {
         return ocean[i][j];
     }
 
-    public boolean isPlacementOk(Ship ship){
-        List<Square> squares = ship.getPositions();
-        for(Square square : squares){
-            if(square.getStatus() != SquareStatus.EMPTY){
-                return false;
-            }
-        }
-        return true;
+    public boolean isPlacementOk(int row, int col){
+        return ocean[row][col].getStatus() == SquareStatus.EMPTY;
     }
 
+    public int getBoardWidth(){
+        return this.BOARD_WIDTH;
+    }
+
+    public int getBoardHeight() {
+        return this.BOARD_HEIGHT;
+    }
+
+    public Square [][] getBoard(){
+        return this.ocean;
+    }
 }
