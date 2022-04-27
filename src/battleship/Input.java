@@ -5,12 +5,22 @@ import java.util.Scanner;
 
 public class Input {
 
+    public String chooseMode(){
+        Scanner mode = new Scanner(System.in);
+        return mode.nextLine();
+    }
+
+    public String askForName(){
+        Scanner nameInput = new Scanner(System.in);
+        return nameInput.nextLine();
+    }
+
     private final Scanner input = new Scanner(System.in);
-    private final Display display = new Display();
+    //private final Display display = new Display();
 
     public String getString(String message){
         Scanner sc = new Scanner(System.in);
-        display.shout(message);
+        Display.shout(message);
 
         String text = "";
         do {
@@ -21,12 +31,12 @@ public class Input {
     }
 
     public int getInt(String message){
-        display.shout(message);
+        Display.shout(message);
         try{
             return input.nextInt();
         }
         catch (NumberFormatException | InputMismatchException e) {
-            display.shout("Not a valid input, please try again.");
+            Display.shout("Not a valid input, please try again.");
             getInt(message);
         }
         return -1;

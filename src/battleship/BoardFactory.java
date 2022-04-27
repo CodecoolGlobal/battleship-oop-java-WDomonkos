@@ -1,5 +1,4 @@
 package battleship;
-import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -17,7 +16,7 @@ public class BoardFactory {
         return Direction.VERTICAL;
     }
 
-    public void placeShips(Player player){
+    public void placeAllShips(Player player){
         for(Ship ship : player.getShips()){
             randomShipPlacement(ship, player.getBoard(), getDirection(), player);
             placeShipToBoard(ship, player.getBoard());
@@ -29,7 +28,7 @@ public class BoardFactory {
             board.setSquareStatus(square.getX(), square.getY(), SquareStatus.SHIP);
         }
     }
-    //for horizontal placement
+
     public void randomShipPlacement(Ship ship,Board board, Direction direction, Player player){
 
        int shipLength =  ship.getShipType().getLength();

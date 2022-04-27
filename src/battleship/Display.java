@@ -5,21 +5,29 @@ public class Display {
         System.out.print("\033\143");
         System.out.flush();
     }
-    public void displayMainMenu(){
-        clear();
-        String mainMenu = "Welcome to the game!";
-        System.out.println(mainMenu);
+
+    public static void askForName(){
+        shout("Please enter your name");
     }
-    public void shout(String message){
+    public static void displayMainMenu(){
+
+        shout("Please choose one of the menu options:\n" +
+                "1: play\n" +
+                "2: quit\n");
+    }
+
+
+
+    public static void shout(String message){
         System.out.println(message);
     }
 
-    public void displayBoard(Board board){
+    public static void displayBoard(Board board){
         System.out.println(board);
     }
 
-    public void displayWinner(Player player){
-        this.clear();
+    public static void displayWinner(Player player){
+        clear();
         System.out.println("\n\n\n\t\t\tThe Winner is: " + player.toString());
     }
 }
