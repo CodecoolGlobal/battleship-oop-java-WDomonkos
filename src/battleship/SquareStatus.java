@@ -2,7 +2,7 @@ package battleship;
 
 public enum SquareStatus {
         EMPTY('.'),
-        NEIGHBOUR('.'),
+        NEIGHBOUR(':'),
         SHIP('X'),
         HIT('H'),
         MISSED('M');
