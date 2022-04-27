@@ -8,6 +8,7 @@ public class Input {
     private final Scanner input = new Scanner(System.in);
     private final Display display = new Display();
 
+
     public String getString(String message){
         Scanner sc = new Scanner(System.in);
         display.shout(message);
