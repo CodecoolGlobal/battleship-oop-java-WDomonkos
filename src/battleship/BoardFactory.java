@@ -17,7 +17,7 @@ public class BoardFactory {
         return Direction.VERTICAL;
     }
 
-    public void placeShips(Player player){
+    public void placeAllShips(Player player){
         for(Ship ship : player.getShips()){
             randomShipPlacement(ship, player.getBoard(), getDirection(), player);
             placeShipToBoard(ship, player.getBoard());
