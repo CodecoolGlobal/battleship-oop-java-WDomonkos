@@ -47,4 +47,24 @@ public class Board {
         return s.toString();
     }
 
+    public void hitShip(int x, int y){
+        ocean[x][y].setStatus(SquareStatus.HIT);
+    }
+
+    public void setSquareStatus(int x, int y, SquareStatus status){
+        ocean[x][y].setStatus(status);
+        if(x < BOARD_HEIGHT - 1 && y < BOARD_WIDTH - 1){
+            ocean[x+1][y+1].setStatus(SquareStatus.NEIGHBOUR);
+        }
+        if(x > 0 && y < BOARD_WIDTH - 1){
+            ocean[x-1][y+1].setStatus(SquareStatus.NEIGHBOUR);
+        }
+        if(x < BOARD_HEIGHT - 1 && y > 0){
+            ocean[x+1][y-1].setStatus(SquareStatus.NEIGHBOUR);
+        }
+        if(x > 0 && y > 0){
+            ocean[x-1][y-1].setStatus(SquareStatus.NEIGHBOUR);
+        }
+
+    }
 }

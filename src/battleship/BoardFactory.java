@@ -4,64 +4,65 @@ import java.util.Random;
 
 
 public class BoardFactory {
-    private Board board;
-
-
-
 
     public int getRandomInt(int max){
         Random random = new Random();
-        int randInt = random.nextInt(max);
-        return randInt;
+        return random.nextInt(max);
     }
-    
+
     public Direction getDirection(){
-        switch (getRandomInt(2)){
-            case 0:
-                return Direction.HORIZONTAL;
-            default:
-                return Direction.VERTICAL;
+        if (getRandomInt(2) == 0) {
+            return Direction.HORIZONTAL;
+        }
+        return Direction.VERTICAL;
+    }
+
+    public void placeShips(Player player){
+        for(Ship ship : player.getShips()){
+            randomShipPlacement(ship, player.getBoard(), getDirection(), player);
+            placeShipToBoard(ship, player.getBoard());
         }
     }
 
+    public void placeShipToBoard(Ship ship, Board board){
+        for(Square square : ship.getPositions()){
+            board.setSquareStatus(square.getX(), square.getY(), SquareStatus.SHIP);
+        }
+    }
     //for horizontal placement
-    public void randomShipPlacement(Ship ship,Board board, Direction direction){
+    public void randomShipPlacement(Ship ship,Board board, Direction direction, Player player){
 
        int shipLength =  ship.getShipType().getLength();
        int lastColumnToBeginPlacement = board.getBoardWidth()-shipLength-1;
 
 
-       while (!tryShipPlacement(direction, lastColumnToBeginPlacement,shipLength, ship)) {
+       while (!tryShipPlacement(direction, lastColumnToBeginPlacement,shipLength, ship, player)) {
 
        }
+
     }
-    private boolean tryShipPlacement(Direction direction, int lastColumnToBeginPlacement, int shipLength, Ship ship){
+    private boolean tryShipPlacement(Direction direction, int lastColumnToBeginPlacement, int shipLength, Ship ship, Player player){
         int randomRow;
         int randomColumn;
-        switch (direction){
-
-            case HORIZONTAL:
-                randomRow = getRandomInt(board.getBoardHeight() + 1);
-                randomColumn = getRandomInt(lastColumnToBeginPlacement + 1);
-                break;
-            default:
-                randomRow = getRandomInt(lastColumnToBeginPlacement + 1);
-                randomColumn = getRandomInt(board.getBoardWidth() + 1);
+        if (direction == Direction.HORIZONTAL) {
+            randomRow = getRandomInt(player.getBoard().getBoardHeight() + 1);
+            randomColumn = getRandomInt(lastColumnToBeginPlacement + 1);
+        } else {
+            randomRow = getRandomInt(lastColumnToBeginPlacement + 1);
+            randomColumn = getRandomInt(player.getBoard().getBoardWidth() + 1);
         }
 
         int counter = 0;
         for(int i = 0; i<shipLength; i++){
-            if(!board.isPlacementOk(randomRow + direction.getRow()*i, randomColumn+direction.getCol()*i)){
+            if(!player.getBoard().isPlacementOk(randomRow + direction.getRow()*i, randomColumn+direction.getCol()*i)){
                 ship.clearPositions();
                 break;
             }else{
-                ship.addPosition(board.getSquare(randomRow+ direction.getRow()*i, randomColumn+direction.getCol()*i));
+                ship.addPosition(player.getBoard().getSquare(randomRow+ direction.getRow()*i, randomColumn+direction.getCol()*i));
                 counter++;
             }
-        }if (counter==shipLength){
-            return true;
         }
-        return false;
+        return counter == shipLength;
     }
 
 }

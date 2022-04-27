@@ -1,6 +1,6 @@
 package battleship;
 
-public enum ShipType {
+public enum ShipType{
     CARRIER(2),
     CRUISER(3),
     BATTLESHIP(4),
