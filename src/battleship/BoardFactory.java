@@ -54,13 +54,21 @@ public class BoardFactory {
 
         int counter = 0;
         for(int i = 0; i<shipLength; i++){
-            if(!player.getBoard().isPlacementOk(randomRow + direction.getRow()*i, randomColumn+direction.getCol()*i)){
-                ship.clearPositions();
-                break;
-            }else{
-                ship.addPosition(player.getBoard().getSquare(randomRow+ direction.getRow()*i, randomColumn+direction.getCol()*i));
-                counter++;
+            int row = randomRow + direction.getRow()*i;
+            int col = randomColumn+direction.getCol()*i;
+            if(row < 9 && col < 9){
+                if(!player.getBoard().isPlacementOk(row, col)){
+                    ship.clearPositions();
+                    break;
+                }else{
+                    ship.addPosition(player.getBoard().getSquare(row, col));
+                    counter++;
+                }
             }
+            else{
+                break;
+            }
+
         }
         return counter == shipLength;
     }
