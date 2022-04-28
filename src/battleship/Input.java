@@ -1,14 +1,17 @@
 package battleship;
 
+import java.nio.charset.StandardCharsets;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
+    public static char[] abc =  {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
 
     public static String chooseMode(){
         Scanner mode = new Scanner(System.in);
         return mode.nextLine();
     }
+
 
     public static String askForName(){
         Scanner nameInput = new Scanner(System.in);
@@ -42,7 +45,11 @@ public class Input {
         }
         return -1;
     }
-    public static boolean checkCoordinate(String coordinate){
+    public static String askForCoordinate(){
+        Scanner coordinateInput = new Scanner(System.in);
+        return coordinateInput.nextLine();
+    }
+    public static boolean checkCoordinateLength(String coordinate){
         if (coordinate.length() == 2){
             return coordinate.matches("\\D\\d"); //digit 0-9 and non digit
         }
@@ -50,5 +57,18 @@ public class Input {
             return coordinate.matches("\\D\\d\\d");
         }
         return false;
+    }
+    public static boolean checkValidLetter(String coordinate){
+        char letter = coordinate.charAt(0);
+        for (char ch : abc){
+            if(letter == ch){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean checkValidNumber(String coordinate){
+        int number = Character.getNumericValue(coordinate.charAt(1));
+        return(number > 0 && number < 11);
     }
 }
