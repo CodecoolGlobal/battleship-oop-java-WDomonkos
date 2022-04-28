@@ -40,7 +40,7 @@ public class BoardFactory {
        }
 
     }
-    private boolean tryShipPlacement(Direction direction, int lastColumnToBeginPlacement, int shipLength, Ship ship, Player player){
+    public boolean tryShipPlacement(Direction direction, int lastColumnToBeginPlacement, int shipLength, Ship ship, Player player){
         int randomRow;
         int randomColumn;
         if (direction == Direction.HORIZONTAL) {
