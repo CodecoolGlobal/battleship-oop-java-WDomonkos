@@ -5,10 +5,6 @@ public class Display {
         System.out.print("\033\143");
         System.out.flush();
     }
-
-    public static void askForName(){
-        shout("Please enter your name");
-    }
     public static void displayMainMenu(){
 
         shout("Please choose one of the menu options:\n" +
@@ -28,16 +24,18 @@ public class Display {
     }*/
 
 
+
     public static void shout(String message){
         System.out.println(message);
-    }
-
-    public static void displayBoard(Board board){
-        System.out.println(board);
     }
 
     public static void displayWinner(Player player){
         clear();
         System.out.println("\n\n\n\t\t\tThe Winner is: " + player.toString());
+    }
+
+    public static void displayPlayer(Player player){
+        clear();
+        shout("\n\n\t" + player.toString() + "'S TURN:\n");
     }
 }
