@@ -29,4 +29,8 @@ public class Square {
         return String.valueOf(this.status.getCharacter());
     }
 
+    public void setStatusHit(){
+        this.status.hit();
+    }
+
 }

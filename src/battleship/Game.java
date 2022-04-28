@@ -11,7 +11,7 @@ public class Game {
         BoardFactory.placeAllShips(playerOne);
         BoardFactory.placeAllShips(playerTwo);
     }
-    public void runGame(){
+    public void runGame() throws InterruptedException {
         while(true){
             runRound(playerOne);
             if(!isTheOtherPlayerAlive(playerOne)){
@@ -26,7 +26,7 @@ public class Game {
         }
     }
 
-    private void runRound(Player player){
+    private void runRound(Player player) throws InterruptedException {
         Display.displayPlayer(player);
         Display.shout(player.getBoard().toString());
         int[] indexes;
@@ -43,6 +43,7 @@ public class Game {
         shoot(player, getOtherPlayer(player), indexes);
         Display.displayPlayer(player);
         Display.shout(player.getBoard().toString());
+        Thread.sleep(2000);
     }
 
     public String getCoordinate(){
@@ -95,4 +96,5 @@ public class Game {
             attacker.getBoard().setSquareStatus(idx[0], idx[1], SquareStatus.MISSED);
         }
     }
+
 }

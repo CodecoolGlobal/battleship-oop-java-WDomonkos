@@ -78,4 +78,8 @@ public class Board {
             }
         }
     }
+
+    public void setSquareHit(int x, int y){
+        ocean[x][y].setStatusHit();
+    }
 }
