@@ -10,14 +10,7 @@ public class Player {
     private final String name;
     Player(String name){
         this.name = name;
-        this.ships.add(new Ship(board, ShipType.DESTROYER));
-        this.ships.add(new Ship(board, ShipType.SUBMARINE));
-        this.ships.add(new Ship(board, ShipType.BATTLESHIP));
-        this.ships.add(new Ship(board, ShipType.CRUISER));
-        this.ships.add(new Ship(board, ShipType.CARRIER));
-    }
-    public String getName(){
-        return this.name;
+        this.generateShips();
     }
     public boolean isAlive(){
         for(Ship ship : this.ships){
@@ -34,5 +27,18 @@ public class Player {
 
     public Board getBoard(){
         return this.board;
+    }
+
+    private void generateShips(){
+        this.ships.add(new Ship(board, ShipType.DESTROYER));
+        this.ships.add(new Ship(board, ShipType.SUBMARINE));
+        this.ships.add(new Ship(board, ShipType.BATTLESHIP));
+        this.ships.add(new Ship(board, ShipType.CRUISER));
+        this.ships.add(new Ship(board, ShipType.CARRIER));
+    }
+
+    @Override
+    public String toString(){
+        return this.name.toUpperCase();
     }
 }
