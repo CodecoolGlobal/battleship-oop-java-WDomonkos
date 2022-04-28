@@ -1,25 +1,23 @@
 package battleship;
 
 public enum SquareStatus {
-        EMPTY('.', true),
-        NEIGHBOUR('*', false),
-        SHIP('.',true),
-        HIT('X', true),
-        MISSED('O', true);
-    private final char symbol;
+        EMPTY("\uD83C\uDF0A", true),
+        NEIGHBOUR("\uD83C\uDF0A", false),
+        SHIP("\uD83C\uDF0A",true),
+        HIT("\uD83D\uDCA5", true),
+        MISSED("\uD83D\uDCA4", true);
+    private final String symbol;
     private boolean isHit;
 
-    SquareStatus(char symbol, boolean isHit) {
+    SquareStatus(String symbol, boolean isHit) {
         this.symbol = symbol;
         this.isHit = isHit;
     }
-    public char getCharacter() {
+    public String getCharacter() {
         return this.isHit ? symbol : '.';
     }
 
     public void hit(){
         this.isHit = true;
-    }
-
 }
 

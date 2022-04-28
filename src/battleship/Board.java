@@ -44,7 +44,7 @@ public class Board {
 
     @Override
     public String toString(){
-        StringBuilder s = new StringBuilder(new String("   0  1  2  3  4  5  6  7  8  9\n"));
+        StringBuilder s = new StringBuilder(new String("   0   1   2   3   4   5   6   7   8   9\n"));
         for(int i = 0; i < BOARD_HEIGHT; i++){
             s.append((char) (i + 65));
             s.append("  ");
