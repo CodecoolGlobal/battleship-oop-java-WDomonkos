@@ -14,10 +14,11 @@ public enum SquareStatus {
         this.isHit = isHit;
     }
     public String getCharacter() {
-        return this.isHit ? symbol : '.';
+        return this.isHit ? symbol : "\uD83C\uDF0A";
     }
 
-    public void hit(){
+    public void hit() {
         this.isHit = true;
+    }
 }
 
