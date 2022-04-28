@@ -47,7 +47,7 @@ public class Input {
     }
     public static String askForCoordinate(){
         Scanner coordinateInput = new Scanner(System.in);
-        return coordinateInput.nextLine();
+        return coordinateInput.nextLine().toUpperCase();
     }
     public static boolean checkCoordinateLength(String coordinate){
         if (coordinate.length() == 2){
@@ -69,6 +69,6 @@ public class Input {
     }
     public static boolean checkValidNumber(String coordinate){
         int number = Character.getNumericValue(coordinate.charAt(1));
-        return(number > 0 && number < 11);
+        return(number > 0 && number < 10);
     }
 }

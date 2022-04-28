@@ -11,19 +11,6 @@ public class Display {
                 "1: play\n" +
                 "2: quit\n");
     }
-   /* public static void displayAskInput(){
-        shout("Please type a coordinate: \n");
-        String coordinate = Input.askForCoordinate();
-        if (
-        Input.checkCoordinateLength(coordinate) &&
-        Input.checkValidNumber(coordinate) &&
-        Input.checkValidLetter(coordinate)){
-            return coordinate;
-        }
-        return null;
-    }*/
-
-
 
     public static void shout(String message){
         System.out.println(message);

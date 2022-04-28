@@ -24,6 +24,15 @@ public class Board {
         return ocean[row][col].getStatus() == SquareStatus.EMPTY;
     }
 
+    public boolean isValidShot(int row, int col){
+        switch (ocean[row][col].getStatus()){
+            case SHIP:
+            case EMPTY:
+                return true;
+            default: return false;
+        }
+
+    }
     public int getBoardWidth(){
         return this.BOARD_WIDTH;
     }
