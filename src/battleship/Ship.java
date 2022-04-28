@@ -8,11 +8,13 @@ public class Ship {
     private ArrayList<Square> positions = new ArrayList<>();
     private final Board board;
     private final ShipType type;
+    private Direction direction;
 
 
     public Ship(Board board, ShipType type){
            this.board = board;
            this.type = type;
+
     }
 
     public void addPosition(Square coordinate){
@@ -37,5 +39,13 @@ public class Ship {
     }
     public void clearPositions(){
         positions.clear();
+    }
+
+    public void  setDirection(Direction shipDirection){
+        direction = shipDirection;
+    }
+
+    public Direction getDirection(){
+        return this.direction;
     }
 }

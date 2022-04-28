@@ -18,14 +18,17 @@ public class BoardFactory {
 
     public static void placeAllShips(Player player){
         for(Ship ship : player.getShips()){
-            randomShipPlacement(ship, player.getBoard(), getDirection(), player);
+            ship.setDirection(getDirection());
+            randomShipPlacement(ship, player.getBoard(), ship.getDirection(), player);
             placeShipToBoard(ship, player.getBoard());
+            System.out.println(ship.getDirection());
         }
     }
 
     public static void placeShipToBoard(Ship ship, Board board){
         for(Square square : ship.getPositions()){
             board.setSquareStatus(square.getX(), square.getY(), SquareStatus.SHIP);
+
         }
     }
 
