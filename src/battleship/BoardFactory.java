@@ -32,7 +32,7 @@ public class BoardFactory {
     public static void randomShipPlacement(Ship ship,Board board, Direction direction, Player player){
 
        int shipLength =  ship.getShipType().getLength();
-       int lastColumnToBeginPlacement = board.getBoardWidth()-shipLength-1;
+       int lastColumnToBeginPlacement = board.getBoardWidth()-shipLength;
 
 
        while (!tryShipPlacement(direction, lastColumnToBeginPlacement,shipLength, ship, player)) {
@@ -44,29 +44,26 @@ public class BoardFactory {
         int randomRow;
         int randomColumn;
         if (direction == Direction.HORIZONTAL) {
-            randomRow = getRandomInt(player.getBoard().getBoardHeight() + 1);
+            randomRow = getRandomInt(player.getBoard().getBoardHeight());
             randomColumn = getRandomInt(lastColumnToBeginPlacement + 1);
         } else {
             randomRow = getRandomInt(lastColumnToBeginPlacement + 1);
-            randomColumn = getRandomInt(player.getBoard().getBoardWidth() + 1);
+            randomColumn = getRandomInt(player.getBoard().getBoardWidth() );
         }
 
         int counter = 0;
         for(int i = 0; i<shipLength; i++){
             int row = randomRow + direction.getRow()*i;
             int col = randomColumn+direction.getCol()*i;
-            if(row < 9 && col < 9){
-                if(!player.getBoard().isPlacementOk(row, col)){
-                    ship.clearPositions();
-                    break;
-                }else{
-                    ship.addPosition(player.getBoard().getSquare(row, col));
-                    counter++;
-                }
-            }
-            else{
+
+            if(!player.getBoard().isPlacementOk(row, col)){
+                ship.clearPositions();
                 break;
+            }else{
+                ship.addPosition(player.getBoard().getSquare(row, col));
+                counter++;
             }
+
 
         }
         return counter == shipLength;
