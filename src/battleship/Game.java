@@ -12,13 +12,13 @@ public class Game {
     public void runGame(){
         while(true){
             runRound(playerOne);
-            if(!isTheOtherPlayerAlive(playerOne)){
-                Display.displayWinner(playerTwo);
+            if(isTheOtherPlayerAlive(playerOne)){
+                Display.displayWinner(playerOne);
                 break;
             }
             runRound(playerTwo);
-            if(!isTheOtherPlayerAlive(playerTwo)){
-                Display.displayWinner(playerOne);
+            if(isTheOtherPlayerAlive(playerTwo)){
+                Display.displayWinner(playerTwo);
                 break;
             }
         }
@@ -27,6 +27,7 @@ public class Game {
     private void runRound(Player player){
         Display.displayPlayer(player);
         Display.shout(player.getBoard().toString());
+        Input.getString("SHOOT AT: ");
             /*
             get coordinate from user
             shot enemy board
