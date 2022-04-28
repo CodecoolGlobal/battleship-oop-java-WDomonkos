@@ -2,10 +2,10 @@ package battleship;
 
 public enum SquareStatus {
         EMPTY('.'),
-        NEIGHBOUR(':'),
-        SHIP('X'),
-        HIT('H'),
-        MISSED('M');
+        NEIGHBOUR('.'),
+        SHIP('.'),
+        HIT('X'),
+        MISSED('O');
     private final char symbol;
 
     SquareStatus(char symbol) {

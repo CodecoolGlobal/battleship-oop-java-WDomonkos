@@ -28,6 +28,7 @@ public class Board {
         switch (ocean[row][col].getStatus()){
             case SHIP:
             case EMPTY:
+            case NEIGHBOUR:
                 return true;
             default: return false;
         }

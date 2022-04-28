@@ -8,16 +8,18 @@ public class Game {
     Game(){
         this.playerOne = new Player(Input.getString("PLAYER 1: "));
         this.playerTwo = new Player(Input.getString("PLAYER 2: "));
+        BoardFactory.placeAllShips(playerOne);
+        BoardFactory.placeAllShips(playerTwo);
     }
     public void runGame(){
         while(true){
             runRound(playerOne);
-            if(isTheOtherPlayerAlive(playerOne)){
+            if(!isTheOtherPlayerAlive(playerOne)){
                 Display.displayWinner(playerOne);
                 break;
             }
             runRound(playerTwo);
-            if(isTheOtherPlayerAlive(playerTwo)){
+            if(!isTheOtherPlayerAlive(playerTwo)){
                 Display.displayWinner(playerTwo);
                 break;
             }
@@ -39,6 +41,8 @@ public class Game {
             }
         }
         shoot(player, getOtherPlayer(player), indexes);
+        Display.displayPlayer(player);
+        Display.shout(player.getBoard().toString());
     }
 
     public String getCoordinate(){

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private List<Ship> ships = new ArrayList<Ship>();
+    private List<Ship> ships = new ArrayList<>();
     private final Board board = new Board();
 
     private final String name;
