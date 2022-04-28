@@ -27,7 +27,7 @@ public class Game {
     private void runRound(Player player){
         Display.displayPlayer(player);
         Display.shout(player.getBoard().toString());
-        int[] indexes = new int[2];
+        int[] indexes;
         while(true){
             String coordinate = getCoordinate();
             indexes = convertCoordinateToIndexes(coordinate);
@@ -38,11 +38,7 @@ public class Game {
                 Display.shout("Not empty nor ship field!");
             }
         }
-
-
-
-
-
+        shoot(player, getOtherPlayer(player), indexes);
     }
 
     public String getCoordinate(){
@@ -74,13 +70,25 @@ public class Game {
     private int[] convertCoordinateToIndexes(String coordinate){
         int[] idx = new int[2];
         idx[0] = coordinate.charAt(0) - 65;
-        System.out.println(idx[0] + "");
         idx[1] = Character.getNumericValue(coordinate.charAt(1));
-        System.out.println(idx[1] + "");
         return idx;
     }
 
     private boolean isTheOtherPlayerAlive(Player player){
         return player == this.playerOne ? playerTwo.isAlive() : playerOne.isAlive();
+    }
+
+    private Player getOtherPlayer(Player player){
+        return player == this.playerOne ? playerTwo : playerOne;
+    }
+
+    private void shoot(Player attacker, Player defender, int[] idx){
+        SquareStatus defStatus = defender.getBoard().getSquare(idx[0], idx[1]).getStatus();
+        if(defStatus == SquareStatus.SHIP){
+            attacker.getBoard().setSquareStatus(idx[0], idx[1], SquareStatus.HIT);
+        }
+        else{
+            attacker.getBoard().setSquareStatus(idx[0], idx[1], SquareStatus.MISSED);
+        }
     }
 }
