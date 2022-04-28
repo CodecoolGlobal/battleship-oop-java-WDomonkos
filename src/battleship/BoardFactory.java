@@ -1,36 +1,35 @@
 package battleship;
-import java.util.ArrayList;
 import java.util.Random;
 
 
 public class BoardFactory {
 
-    public int getRandomInt(int max){
+    public static int getRandomInt(int max){
         Random random = new Random();
         return random.nextInt(max);
     }
 
-    public Direction getDirection(){
+    public static Direction getDirection(){
         if (getRandomInt(2) == 0) {
             return Direction.HORIZONTAL;
         }
         return Direction.VERTICAL;
     }
 
-    public void placeAllShips(Player player){
+    public static void placeAllShips(Player player){
         for(Ship ship : player.getShips()){
             randomShipPlacement(ship, player.getBoard(), getDirection(), player);
             placeShipToBoard(ship, player.getBoard());
         }
     }
 
-    public void placeShipToBoard(Ship ship, Board board){
+    public static void placeShipToBoard(Ship ship, Board board){
         for(Square square : ship.getPositions()){
             board.setSquareStatus(square.getX(), square.getY(), SquareStatus.SHIP);
         }
     }
-    //for horizontal placement
-    public void randomShipPlacement(Ship ship,Board board, Direction direction, Player player){
+
+    public static void randomShipPlacement(Ship ship,Board board, Direction direction, Player player){
 
        int shipLength =  ship.getShipType().getLength();
        int lastColumnToBeginPlacement = board.getBoardWidth()-shipLength-1;
@@ -41,7 +40,7 @@ public class BoardFactory {
        }
 
     }
-    private boolean tryShipPlacement(Direction direction, int lastColumnToBeginPlacement, int shipLength, Ship ship, Player player){
+    private static boolean tryShipPlacement(Direction direction, int lastColumnToBeginPlacement, int shipLength, Ship ship, Player player){
         int randomRow;
         int randomColumn;
         if (direction == Direction.HORIZONTAL) {

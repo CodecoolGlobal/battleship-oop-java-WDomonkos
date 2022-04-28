@@ -5,21 +5,21 @@ import java.util.Scanner;
 
 public class Input {
 
-    public String chooseMode(){
+    public static String chooseMode(){
         Scanner mode = new Scanner(System.in);
         return mode.nextLine();
     }
 
-    public String askForName(){
+    public static String askForName(){
         Scanner nameInput = new Scanner(System.in);
         return nameInput.nextLine();
     }
 
-    private final Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
     //private final Display display = new Display();
 
 
-    public String getString(String message){
+    public static String getString(String message){
         Scanner sc = new Scanner(System.in);
         Display.shout(message);
 
@@ -31,7 +31,7 @@ public class Input {
         return text;
     }
 
-    public int getInt(String message){
+    public static int getInt(String message){
         Display.shout(message);
         try{
             return input.nextInt();
@@ -42,7 +42,7 @@ public class Input {
         }
         return -1;
     }
-    public boolean checkCoordinate(String coordinate){
+    public static boolean checkCoordinate(String coordinate){
         if (coordinate.length() == 2){
             return coordinate.matches("\\D\\d"); //digit 0-9 and non digit
         }
